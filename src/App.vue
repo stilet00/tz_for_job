@@ -1,28 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+      <Container />
+    <router-view/>
   </div>
 </template>
 
+<style lang="sass">
+$primary-color: #ef5b4c
+$secondaty-color: #007bff
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap')
+body
+  font-family: 'Open Sans', sans-serif
+</style>
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Container from "@/views/Container";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: {Container}
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
