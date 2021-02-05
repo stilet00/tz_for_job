@@ -34,7 +34,7 @@ div
   justify-content: space-between
   flex-direction: column
   align-items: center
-  margin: 0 50px 55px 50px
+  margin: 0 1em 55px 1em
 
 img
   border-radius: 50%

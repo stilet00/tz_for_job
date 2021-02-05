@@ -92,8 +92,10 @@ $backgroundColor: #f9f9f3
     margin-bottom: 0
 .photo-container
   margin: 80px auto
+  max-width: 800px
   display: flex
   flex-wrap: wrap
+  justify-content: space-between
 
   button
     position: absolute
