@@ -227,6 +227,7 @@ export default {
             })
             .catch(err => {
               this.displayMessage('Failed to registered', 'red')
+              this.sending = false
               console.log(err)
             })
       }
