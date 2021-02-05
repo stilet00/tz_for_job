@@ -196,6 +196,7 @@ export default {
       }
 
     },
+    // receiving image from UploadPhoto component
     addPhoto(data) {
       this.user.photo = data.photo;
     },
@@ -243,6 +244,7 @@ export default {
       this.user.token = null
       this.sending = false
     },
+    //making parent know that registration is successful
     regDone() {
       this.$emit('success')
     },

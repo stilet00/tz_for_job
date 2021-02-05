@@ -1,3 +1,9 @@
+<!--
+submit button is used several times on the page,
+so we can use this component more than once.
+We'll just use different props
+-->
+
 <template>
   <button
       @click="clicked"

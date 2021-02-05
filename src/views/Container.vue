@@ -29,6 +29,7 @@ export default {
     }
   },
   methods: {
+    // making users block know that registration is successful so it needes to refresh
     regDone() {
       this.regSuccess = !this.regSuccess
     }

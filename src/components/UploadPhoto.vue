@@ -1,7 +1,8 @@
+<!--
+This upload menu may be needed again, so I made it as a component
+-->
 <template>
 <div class="photos">
-<!--  <input type="file" @change="onFileSelected" required>-->
-
   <input type="file" name="file" id="file" class="inputfile" required @change="onFileSelected"/>
   <label for="file">{{selectedFile ? selectedFile.name : "Choose a file"}}</label>
 
