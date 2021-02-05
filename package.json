@@ -43,5 +43,14 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` yarn install ```",
+  "main": "babel.config.js",
+  "keywords": [
+    "test",
+    "for",
+    "job"
+  ],
+  "author": "antonstilet",
+  "license": "ISC"
 }

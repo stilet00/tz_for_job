@@ -1,8 +1,8 @@
 <template>
   <div class="form-main">
-    <div class="form">
+    <div class="form" id="form-block">
       <form @submit.prevent="getToken">
-        <h1>Register to get a work</h1>
+        <h1 id="registration">Register to get a work</h1>
         <p>Attention! After soccessful registration and alert, update the list of users in the block from the top</p>
         <div class="inputs-block">
           <div class="inputs">
@@ -14,9 +14,10 @@
                 id="name"
                 v-model="user.name"
                 type="text"
-                placeholder="Your name"
+                :placeholder="user.name || 'Enter your name'"
                 class="field"
             >
+            <span>Error</span>
           </div>
 
           <div class="inputs">
@@ -28,9 +29,10 @@
                 id="email"
                 v-model="user.email"
                 type="email"
-                placeholder="Your email"
+                :placeholder="user.email || 'Your email'"
                 class="field"
             />
+            <span>Error</span>
           </div>
           <div class="inputs">
             <label>Phone number</label>
@@ -41,9 +43,10 @@
                 id="tel"
                 v-model="user.phoneNumber"
                 type="tel"
-                placeholder="+3 80 XX XXX XX XX"
+                :placeholder="user.phoneNumber || '+3 80 XX XXX XX XX'"
                 class="field"
             />
+            <span>Error</span>
           </div>
 
           <div class="inputs">
@@ -57,6 +60,7 @@
                   name="positions"
               />
               <label>Security</label>
+
             </div>
 
             <div class="radios">
@@ -92,17 +96,19 @@
             <UploadPhoto
             @photoAdded="addPhoto"
             />
-          </div>
 
+            <p class="added-photo" v-if="this.user.photo">{{this.user.photo.name}}</p>
+          </div>
 
         </div>
 
 
-        <button type="submit">Submit</button>
+        <SingUpButton
+        type="submit"
+        inner="Sing up now"
+        />
 
       </form>
-
-      <pre>{{ user }}</pre>
     </div>
   </div>
 
@@ -113,19 +119,20 @@
 <script>
 import axios from 'axios'
 import UploadPhoto from "@/components/UploadPhoto";
+import SingUpButton from "@/components/SingUpButton";
 
 export default {
-  components: {UploadPhoto},
+  components: {SingUpButton, UploadPhoto},
   data () {
     return {
       user: {
-        name: '',
-        email: '',
-        phoneNumber: '',
+        name: null,
+        email: null,
+        phoneNumber: null,
         position: null,
         photo: null,
         validation: false,
-        token: null
+        token: null,
       }
     }
   },
@@ -147,10 +154,12 @@ export default {
       let regExpName = /^[a-z\d]{2,60}$/
       if (regExpName.test(this.user.name)) {
         e.target.classList.remove('wrong-field')
+        e.target.nextSibling.classList.remove('err-shown')
         this.user.validation = true
 
       } else {
         e.target.classList.add('wrong-field')
+        e.target.nextSibling.classList.add('err-shown')
         this.user.validation = false
       }
 
@@ -159,10 +168,12 @@ export default {
       let regExpEmail = /^((([0-9A-Za-z]{1}[-0-9A-z]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u
       if (regExpEmail.test(this.user.email)) {
         e.target.classList.remove('wrong-field')
+        e.target.nextSibling.classList.remove('err-shown')
         this.user.validation = true
 
       } else {
         e.target.classList.add('wrong-field')
+        e.target.nextSibling.classList.add('err-shown')
         this.user.validation = false
       }
 
@@ -171,10 +182,12 @@ export default {
       let regExpTel = /^\+380[\d]{9}$/
       if (regExpTel.test(this.user.phoneNumber)) {
         e.target.classList.remove('wrong-field')
+        e.target.nextSibling.classList.remove('err-shown')
         this.user.validation = true
 
       } else {
         e.target.classList.add('wrong-field')
+        e.target.nextSibling.classList.add('err-shown')
         this.user.validation = false
       }
 
@@ -197,12 +210,54 @@ export default {
         })
         promise
             .then(res => {
-              if (res.ok && res.status === 200) {return res.json()}
+              if (res.ok && res.status === 201) {
+                return res.json()
+              } else {
+                return Promise.reject(res.status);
+              }
             })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .then(res => {
+              this.regDone(res)
+              this.displayMessage('User has been registered', 'green')
+              this.clearAll()
+            })
+            .catch(err => {
+              this.displayMessage('Failed to registered', 'red')
+              console.log(err)
+            })
       }
 
+    },
+    clearAll() {
+      this.user.name = null
+      this.user.email = null
+      this.user.phoneNumber = null
+      this.user.position = null
+      this.user.photo = null
+      this.user.validation = false
+      this.user.token = null
+    },
+    regDone() {
+      this.$emit('success')
+    },
+    displayMessage(text, color) {
+      const msgContainer = document.createElement('div')
+      const message = document.createElement('h1')
+      const style1 = msgContainer.style
+      const style2 = message.style
+      message.innerHTML = text
+      style1.position = 'absolute'
+      style1.border = '5px solid grey'
+      style1.width = '100%'
+      style1.margin = "0 auto"
+      style1.borderRadius = '10px'
+      style1.bottom = '50%'
+      style2.color = color
+      msgContainer.append(message)
+      document.getElementById('form-block').append(msgContainer)
+      setTimeout(() => {
+        msgContainer.remove()
+      }, 2000)
     }
   }
 }
@@ -210,8 +265,7 @@ export default {
 <style scoped lang="sass">
 .form-main
   width: 100%
-  background: black
-  padding-top: 10em
+  padding-top: 100px
 .container
   background: white
   width: 100%
@@ -219,42 +273,55 @@ export default {
   text-align: center
   width: 80%
   margin: 0 auto
-  background: whitesmoke
   display: flex
   flex-direction: column
   align-items: center
-  h1
-    font-size: 40px
-    letter-spacing: 2px
+  position: relative
+
   p
     display: inline-block
     width: 65%
     margin: 0 auto
     font-size: 15px
+    &.added-photo
+      border-radius: 5px
+      box-sizing: border-box
+  span
+    color: red
+    opacity: 0
+    margin: 0
   input
+    box-sizing: border-box
+    padding-left: 10px
     width: 100%
     outline: none
-    height: 2.5em
+    height: 3.5em
     margin-top: 5px
     border-radius: 5px
-    padding-left: 10px
-    border: 1px solid transparent
-
+    border: 1px solid darkgrey
 
 .inputs-block
-  width: 60%
   margin: 0 auto
+  box-sizing: border-box
 .inputs
-  margin-top: 20px
+  box-sizing: border-box
+  margin-top: 10px
   text-align: left
+  &:first-child
+    margin-top: 20px
 .radios
   display: flex
   align-items: center
   input
     width: 20px
-    margin: 0 20px 0 0
+    margin: 0 10px 0 0
+
 .wrong-field
   border-color: red!important
+  position: relative
+.err-shown
+  opacity: 1!important
+
 
 
 </style>

@@ -1,23 +1,47 @@
 <template>
 <div class="container">
   <Header />
-  <SimpleForm />
+    <FirstPart />
+    <SecondPart />
+    <UsersBlock
+        :reg="regSuccess"
+    />
+    <SimpleForm
+    @success="regDone"
+    />
+
+
+
 </div>
 </template>
 
 <script>
-import Header from "@/components/Header";
 import SimpleForm from "@/views/SimpleForm";
+import UsersBlock from "@/views/UsersBlock";
+import FirstPart from "@/views/FirstPart";
+import SecondPart from "@/views/SecondPart";
+import Header from "@/components/Header";
 export default {
   name: "Container",
-  components: {SimpleForm, Header}
+  data() {
+    return {
+      regSuccess: false
+    }
+  },
+  methods: {
+    regDone() {
+      this.regSuccess = !this.regSuccess
+    }
+  },
+  components: {Header, SecondPart, FirstPart, UsersBlock, SimpleForm}
 }
 </script>
 
 <style lang="sass" scoped>
 .container
-  width: 80%
-  height: 200px
+  width: 60%
+  max-width: 1170px
   margin: 0 auto
-  background: grey
+
+
 </style>
