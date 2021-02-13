@@ -20,6 +20,7 @@ p
 //animation of blocks
 
 
+
 </style>
 <script>
 import Container from "@/views/Container";

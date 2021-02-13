@@ -58,17 +58,21 @@ nav
 
 @media (max-width: 375px)
   header
-    width: 20%
-    flex-direction: column
-    height: 90vh
-    align-items: center
-    margin: 0
-    justify-content: space-evenly
-    nav, .logo
-      flex-direction: column
+    flex-flow: wrap
+    .logo
+      width: 100%
+      justify-content: center
     nav
-      height: 80%
+      font-size: 10px
+      display: flex
       justify-content: space-evenly
+      width: 100%
+      a
+        margin-right: 0
+
+
+
+
 
 
 </style>

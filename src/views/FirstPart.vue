@@ -44,5 +44,33 @@ name: "FirstPart",
   h1
     text-transform: uppercase
     margin: 0
+@media(max-width: 812px)
+  .text
+    display: flex
+    flex-wrap: wrap
+    width: 100%
+    justify-content: space-between
+    h1
+      &:nth-child(1)
+        width: 100%
+      &:nth-child(2)
+        width: 100%
+
+      &:nth-child(3)
+        width: 100%
+  button
+    width: 100%
+@media(max-width: 768px)
+  .text
+    display: block
+    width: 100%
+@media (max-width: 375px)
+  h1
+    font-size: 1.2em
+  p
+    font-size: 12px
+
+
+
 
 </style>

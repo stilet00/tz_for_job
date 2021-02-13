@@ -56,5 +56,22 @@ name: "SecondPart"
         &:hover
           background: #ec8383
           color: white
+@media(max-width: 812px)
+  .inner
+    .text
+      width: 45% !important
+@media (max-width: 375px)
+  .second-container
+    padding: 10% 10px
+    h1
+      font-size: 3em
+  .inner
+    .text
+      width: 100% !important
+
+
+
+
+
 
 </style>

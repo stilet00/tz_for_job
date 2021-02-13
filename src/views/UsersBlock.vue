@@ -101,5 +101,15 @@ $backgroundColor: #f9f9f3
     position: absolute
     bottom: 20px
     left: 40%
+@media (max-width: 375px)
+  .main
+    padding: 5% 0
+    h1
+      font-size: 2em
+    .photo-container
+      margin: 15% auto
+      div
+        width: 40%
+
 
 </style>

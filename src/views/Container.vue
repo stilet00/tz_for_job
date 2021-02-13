@@ -43,6 +43,18 @@ export default {
   width: 60%
   max-width: 1170px
   margin: 0 auto
+@media(max-width: 1024px)
+  .container
+    width: 90%
+  header
+    width: 90%
+
+
+
+
+
+
+
 
 
 </style>
