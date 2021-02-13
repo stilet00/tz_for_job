@@ -3,13 +3,15 @@
     <div class="logo">
       <img src="../assets/favicon-32x32.png" alt="">
       TESTTASK
+      <img
+          @click="showHide"
+          v-if="smartPhone"
+          src="../assets/menu_icon.svg" alt="">
     </div>
-    <button
-        @click="showHide"
-        v-if="smartPhone"
-    >
-      <img src="../assets/menu_icon.svg" alt="">
-    </button>
+
+
+
+
     <transition v-on:before-enter="beforeEnter"
                 v-on:enter="enter"
                 v-on:leave="leave"
@@ -80,8 +82,9 @@ header
   box-sizing: border-box
   padding: 5px 20px
   max-width: 1170px
-  button
-    margin: 0 auto
+  img
+    margin-left: 20px
+
 nav
   display: flex
   align-items: center
