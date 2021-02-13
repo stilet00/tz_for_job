@@ -94,6 +94,12 @@ span
   border: 1px solid red!important
 .err-shown
   opacity: 1!important
+@media (max-width: 568px)
+  .photos
+    label
+      width: 80%
+    button
+      width: 20%
 
 
 

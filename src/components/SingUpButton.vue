@@ -51,5 +51,10 @@ button
 
 .inactive
   bakcgorund
+@media (max-width: 812px)
+  button
+    width: 90%
+    margin-top: 0
+
 
 </style>

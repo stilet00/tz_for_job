@@ -59,8 +59,8 @@ name: "SecondPart"
 @media(max-width: 812px)
   .inner
     .text
-      width: 45% !important
-@media (max-width: 375px)
+      width: 40% !important
+@media (max-width: 568px)
   .second-container
     padding: 10% 10px
     h1

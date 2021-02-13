@@ -48,6 +48,11 @@ export default {
     width: 90%
   header
     width: 90%
+@media(max-width: 320px)
+  .container
+    width: 100%
+  header
+    width: 100%
 
 
 

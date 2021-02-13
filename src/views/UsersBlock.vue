@@ -101,7 +101,11 @@ $backgroundColor: #f9f9f3
     position: absolute
     bottom: 20px
     left: 40%
-@media (max-width: 375px)
+@media (max-width: 812px)
+  .photo-container
+    div
+      width: 25%
+@media (max-width: 568px)
   .main
     padding: 5% 0
     h1
@@ -109,7 +113,13 @@ $backgroundColor: #f9f9f3
     .photo-container
       margin: 15% auto
       div
-        width: 40%
+        width: 25%
+        margin: 0 1em 30px 1em
+@media (max-width: 414px)
+  .photo-container
+    justify-content: space-evenly
+    div
+      width: 40%
 
 
 </style>

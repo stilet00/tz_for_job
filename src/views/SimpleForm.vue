@@ -407,4 +407,15 @@ export default {
 
   100%
     opacity: 0
+@media (max-width: 568px)
+  h1
+    font-size: 3em
+  .form
+    p
+      width: 100%
+  button
+    width: 100%
+
+
+
 </style>

@@ -48,10 +48,14 @@ p
     margin-bottom: 15px
   &.email
     margin-bottom: 12px
-@media (max-width: 375px)
+@media (max-width: 568px)
   h2
     margin: 0
     font-size: 1em
+  *p
+    margin-bottom: 7px!important
+    font-size: 10px
+    line-height: 10px
 
 
 </style>

@@ -64,7 +64,8 @@ name: "FirstPart",
   .text
     display: block
     width: 100%
-@media (max-width: 375px)
+
+@media (max-width: 568px)
   h1
     font-size: 1.2em
   p

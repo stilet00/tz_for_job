@@ -32,6 +32,7 @@ header
   background: #f9f9f3
   box-sizing: border-box
   padding: 5px 20px
+  max-width: 1170px
 nav
   display: flex
   align-items: center
@@ -56,7 +57,7 @@ nav
     margin-right: 1em
 
 
-@media (max-width: 375px)
+@media (max-width: 568px)
   header
     flex-flow: wrap
     .logo
